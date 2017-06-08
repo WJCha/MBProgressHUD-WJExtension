@@ -109,4 +109,55 @@
 
 本扩展是基于 `MBProgressHUD`封装，自定义的`View`指的是如下图中的红框部分。自定义的`View`将显示在红框那个位置
 
+
+
  ![Snip20170607_2](resource/Snip20170607_2.png)
+
+
+
+# 关于搜索不到框架的问题
+
+
+
+如果 `pod search MBProgressHUD+WJExtension`搜索不到当前扩展，需要你手动清除缓存
+
+ ![Snip20170608_3](resource/Snip20170608_3.png)
+
+
+
+然后再重新搜索`pod search MBProgressHUD+WJExtension`即可，在这个过程中，会自动创建新的索引文件。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
