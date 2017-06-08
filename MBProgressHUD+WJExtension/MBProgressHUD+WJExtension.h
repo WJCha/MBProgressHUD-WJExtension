@@ -5,9 +5,12 @@
 //  Created by 陈威杰 on 2017/6/2.
 //  Copyright © 2017年 ChenWeiJie. All rights reserved.
 //
-//----------------------------------------------------
-//             基于 MBProgressHUD 框架封装（支持横竖屏）
-//----------------------------------------------------
+//----------------------------------------------------------------
+//       基于 MBProgressHUD 0.9.2版本封装（支持横竖屏）
+//       当前版本：1.1.0
+//       如果在使用过程中有问题或者建议可以随时联系我：
+//       weejie_chen@icloud.com 或者 GitHub issue
+//-----------------------------------------------------------------
 
 
 #import "MBProgressHUD.h"
@@ -77,16 +80,20 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
 
 
 #pragma mark - 自己设置提示信息的 图标
+
+
 /**
  显示带有自定义icon图标消息HUD
 
- @param message 消息正文
  @param icon 图标
+ @param message 消息正文
  @param view 展示的view
  */
-+ (void)wj_showMessage:(NSString *)message
-                  icon:(UIImage *)icon
-                  view:(nullable UIView *)view;
++ (void)wj_showIcon:(UIImage *)icon
+            message:(NSString *)message
+               view:(nullable UIView *)view;
+
++ (void)wj_showIcon:(UIImage *)icon message:(NSString *)message;
 
 
 #pragma mark - 有加载进度的HUD
@@ -103,14 +110,14 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
                                 toView:(nullable UIView *)view;
 
 /**
- 只显示菊花加载动画
+ 只显示菊花加载动画，不会自动消失，需要在你需要移除的时候调用 wj_hideHUDForView: 等移除方法
 
  @param view 展示的View
  @return MBProgressHUD对象，可以通过它调用MBProgressHUD中的方法
  */
 + (instancetype)wj_showActivityLoadingToView:(nullable UIView *)view;
 /**
- 只显示菊花加载动画
+ 只显示菊花加载动画，不会自动消失，需要在你需要移除的时候调用 wj_hideHUDForView: 等移除方法
  
  @return MBProgressHUD对象，可以通过它调用MBProgressHUD中的方法
  */

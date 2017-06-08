@@ -336,6 +336,7 @@
 				DF47F3C01EE7A53500D02670 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

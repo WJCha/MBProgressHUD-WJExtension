@@ -82,8 +82,9 @@
         [MBProgressHUD wj_showError:@"操作失败"];
         
     } else if (3 == indexPath.row) {
-        
-        [MBProgressHUD wj_showMessage:@"测试图标" icon:[UIImage imageNamed:@"icon_component"] view:nil];
+
+//        [MBProgressHUD wj_showIcon:[UIImage imageNamed:@"icon_component"] message:@"测试图标" view:nil];
+        [MBProgressHUD wj_showIcon:[UIImage imageNamed:@"icon_component"] message:@"测试图标"];
         
     } else if (4 == indexPath.row) {
         

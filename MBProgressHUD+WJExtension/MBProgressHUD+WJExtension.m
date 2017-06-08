@@ -36,31 +36,35 @@
 
 #pragma mark 显示带有自定义icon图片的消息
 /**
- 显示带有自定义icon图片的消息
+ 显示带有自定义icon图标消息HUD
  
+ @param icon 图标
  @param message 消息正文
- @param icon 图片
  @param view 展示的view
  */
-+ (void)wj_showMessage:(NSString *)message icon:(UIImage *)icon view:(nullable UIView *)view
-{
++ (void)wj_showIcon:(UIImage *)icon message:(NSString *)message view:(nullable UIView *)view{
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     // 默认
-//    hud.mode = MBProgressHUDModeIndeterminate;
+    //    hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = message;
     // 设置图片
     hud.customView = [[UIImageView alloc] initWithImage:icon];
     // 再设置模式
     hud.mode = MBProgressHUDModeCustomView;
-
-
+    
+    
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
     [hud hide:YES afterDelay:1.0];
+}
+
+
++ (void)wj_showIcon:(UIImage *)icon message:(NSString *)message{
+    [self wj_showIcon:icon message:message view:nil];
 }
 
 
