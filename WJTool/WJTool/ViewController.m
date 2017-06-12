@@ -27,7 +27,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 9;
+    return 11;
     
 }
 
@@ -58,8 +58,11 @@
         cell.textLabel.text = @"显示菊花";
     } else if (8 == indexPath.row) {
         cell.textLabel.text = @"自定义HUD中的View视图";
+    } else if (9 == indexPath.row) {
+        cell.textLabel.text = @"操作成功碎花粒子效果";
+    } else if (10 == indexPath.row) {
+        cell.textLabel.text = @"显示碎花粒子效果";
     }
-    
     
     return cell;
 }
@@ -80,6 +83,7 @@
     } else if (2 == indexPath.row) {
         
         [MBProgressHUD wj_showError:@"操作失败"];
+//        [MBProgressHUD wj_showColouredRibbonAnimationWithHideTime:1.0];
         
     } else if (3 == indexPath.row) {
 
@@ -164,6 +168,15 @@
             
             return view;
         }];
+        
+    } else if (9 == indexPath.row) {
+        
+//        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation:@"操作成功"];
+        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation];
+        
+    } else if (10 == indexPath.row) {
+        
+        [MBProgressHUD wj_showColouredRibbonAnimationWithHideTime:2.0];
         
     }
     

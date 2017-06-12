@@ -1,5 +1,5 @@
 # MBProgressHUD+WJExtension
-基于 MBProgressHUD 的封装，方便使用，并增加了操作成功与失败的HUD动画。
+基于 MBProgressHUD 的封装，方便使用，并增加了操作成功与失败的HUD动画与祝贺撒花效果。
 
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF2F81351EEA90BE00BD1C63 /* WJColouredRibbonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2F81341EEA90BE00BD1C63 /* WJColouredRibbonAnimation.m */; };
+		DF2F81371EEA9CC100BD1C63 /* MBProgressExtension.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF2F81361EEA9CC100BD1C63 /* MBProgressExtension.bundle */; };
 		DF47F3AC1EE7A53500D02670 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF47F3AB1EE7A53500D02670 /* main.m */; };
 		DF47F3AF1EE7A53500D02670 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF47F3AE1EE7A53500D02670 /* AppDelegate.m */; };
 		DF47F3B21EE7A53500D02670 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF47F3B11EE7A53500D02670 /* ViewController.m */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF2F81331EEA90BE00BD1C63 /* WJColouredRibbonAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJColouredRibbonAnimation.h; sourceTree = "<group>"; };
+		DF2F81341EEA90BE00BD1C63 /* WJColouredRibbonAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJColouredRibbonAnimation.m; sourceTree = "<group>"; };
+		DF2F81361EEA9CC100BD1C63 /* MBProgressExtension.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressExtension.bundle; sourceTree = "<group>"; };
 		DF47F3A71EE7A53500D02670 /* WJTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WJTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF47F3AB1EE7A53500D02670 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DF47F3AD1EE7A53500D02670 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,12 +97,15 @@
 		DF47F3C11EE7A54900D02670 /* MBProgressHUD+WJExtension */ = {
 			isa = PBXGroup;
 			children = (
+				DF2F81361EEA9CC100BD1C63 /* MBProgressExtension.bundle */,
 				DF47F3C21EE7A54900D02670 /* MBProgressHUD+WJExtension.h */,
 				DF47F3C31EE7A54900D02670 /* MBProgressHUD+WJExtension.m */,
 				DF47F3C41EE7A54900D02670 /* MBProgressHUD.h */,
 				DF47F3C51EE7A54900D02670 /* MBProgressHUD.m */,
 				DF47F3C61EE7A54900D02670 /* WJSuccessView.h */,
 				DF47F3C71EE7A54900D02670 /* WJSuccessView.m */,
+				DF2F81331EEA90BE00BD1C63 /* WJColouredRibbonAnimation.h */,
+				DF2F81341EEA90BE00BD1C63 /* WJColouredRibbonAnimation.m */,
 			);
 			name = "MBProgressHUD+WJExtension";
 			path = "../../MBProgressHUD+WJExtension";
@@ -164,6 +172,7 @@
 				DF47F3BA1EE7A53500D02670 /* LaunchScreen.storyboard in Resources */,
 				DF47F3B71EE7A53500D02670 /* Assets.xcassets in Resources */,
 				DF47F3B51EE7A53500D02670 /* Main.storyboard in Resources */,
+				DF2F81371EEA9CC100BD1C63 /* MBProgressExtension.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2F81351EEA90BE00BD1C63 /* WJColouredRibbonAnimation.m in Sources */,
 				DF47F3C81EE7A54900D02670 /* MBProgressHUD+WJExtension.m in Sources */,
 				DF47F3B21EE7A53500D02670 /* ViewController.m in Sources */,
 				DF47F3C91EE7A54900D02670 /* MBProgressHUD.m in Sources */,

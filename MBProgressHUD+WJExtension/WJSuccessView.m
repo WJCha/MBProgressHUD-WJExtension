@@ -67,11 +67,11 @@
     [animation setFromValue:@0.0];
     [animation setToValue:@1.0];
 
-    [animation setDuration:0.3];
+    [animation setDuration:0.45];
    //当动画结束后,layer会一直保持着动画最后的状态
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
-    [_shapeLayer addAnimation:animation forKey:@"Circle"];
+    [_shapeLayer addAnimation:animation forKey:@"strokeEnd"];
     
 }
 

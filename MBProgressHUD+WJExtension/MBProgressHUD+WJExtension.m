@@ -9,7 +9,7 @@
 #import "MBProgressHUD+WJExtension.h"
 
 #import "WJSuccessView.h"
-
+#import "WJColouredRibbonAnimation.h"
 
 @implementation MBProgressHUD (WJExtension)
 
@@ -249,6 +249,12 @@
 }
 
 
+
+
+
+
+
+
 + (void)show:(nullable NSString *)text animationType:(WJAnimationType)animationType view:(nullable UIView *)view
 {
     //    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
@@ -274,6 +280,23 @@
     [MBProgressHUD wj_showCustomView:suc message:text hideAfterDelay:1.0 toView:view];
 }
 
+#pragma mark - 操作成功彩带粒子祝贺HUD
+
+
++ (void)wj_showSuccessWithColouredRibbonAnimation:(nullable NSString *)message {
+    [self wj_showSuccess:message];
+    [WJColouredRibbonAnimation wj_showSuccessColouredRibbonAnimationWithHideTime:1.0];
+    
+}
+
++ (void)wj_showSuccessWithColouredRibbonAnimation {
+    [self wj_showSuccessWithColouredRibbonAnimation:nil];
+    
+}
+
++ (void)wj_showColouredRibbonAnimationWithHideTime:(NSTimeInterval)time{
+    [WJColouredRibbonAnimation wj_showSuccessColouredRibbonAnimationWithHideTime:time];
+}
 
 
 

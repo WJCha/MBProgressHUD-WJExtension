@@ -5,12 +5,16 @@
 //  Created by 陈威杰 on 2017/6/2.
 //  Copyright © 2017年 ChenWeiJie. All rights reserved.
 //
-//----------------------------------------------------------------
-//       基于 MBProgressHUD 0.9.2版本封装（支持横竖屏）
-//       当前版本：1.1.0
-//       如果在使用过程中有问题或者建议可以随时联系我：
-//       weejie_chen@icloud.com 或者 GitHub issue
-//-----------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//  1、基于 MBProgressHUD 0.9.2版本封装（支持横竖屏），增加了操作成功、失败的打勾打叉动画，
+//    以及提供了一种可能适用于祝贺类的弹框提示所需的撒花（碎花粒子效果）效果，可酌情使用。
+//    当前扩展的 GitHub 地址：https://github.com/WJCha/MBProgressHUD-WJExtension
+//  2、当前版本：1.2.0
+//  3、如果在使用过程中有问题或者建议可以随时联系我：weejie_chen@icloud.com 或者 GitHub issue
+//
+//  4、更新日志：
+//  版本：1.2.0 --> 增加撒花祝贺效果，修改打勾打叉动画时长
+//----------------------------------------------------------------------------------
 
 
 #import "MBProgressHUD.h"
@@ -31,7 +35,7 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
 
 
 
-#pragma mark - 显示成功失败信息（自定义view打勾打叉动画）
+#pragma mark - 显示操作成功或失败信息（自定义view打勾打叉动画）
 
 /**
  显示失败信息，同时有打叉的动画
@@ -71,6 +75,29 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
  只显示打勾动画HUD
  */
 + (void)wj_showSuccess;
+
+
+
+#pragma mark - 操作成功 & 彩带粒子碎花祝贺HUD效果
+
+/**
+ 显示操作成功HUD的同时伴随碎花粒子动画效果，可用于祝贺的场景
+
+ @param message 祝贺消息
+ */
++ (void)wj_showSuccessWithColouredRibbonAnimation:(nullable NSString *)message;
+/**
+ 显示操作成功HUD的同时伴随碎花粒子动画效果，可用于祝贺的场景
+ */
++ (void)wj_showSuccessWithColouredRibbonAnimation;
+
+#pragma mark - 自行调用彩带粒子碎花效果方法
+/**
+ 显示碎花粒子效果
+ */
++ (void)wj_showColouredRibbonAnimationWithHideTime:(NSTimeInterval)time;
+
+
 
 #pragma mark - 显示纯文本信息
 /**
