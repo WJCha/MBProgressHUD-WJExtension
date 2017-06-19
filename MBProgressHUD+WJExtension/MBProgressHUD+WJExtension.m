@@ -19,31 +19,42 @@
  */
 + (void)wj_showText:(NSString *)text view:(nullable UIView *)view
 {
+    [self wj_showPlainText:text hideAfterDelay:1.0 view:view];
+}
+
++ (void)wj_showPlainText:(NSString *)text view:(nullable UIView *)view{
+    [self wj_showPlainText:text hideAfterDelay:1.0 view:view];
+}
+
++ (void)wj_showPlainText:(NSString *)text
+          hideAfterDelay:(NSTimeInterval)time
+                    view:(nullable UIView *)view {
+    
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = text;
-
+    
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
-    [hud hide:YES afterDelay:1.0];
-
+    [hud hide:YES afterDelay:time];
     
 }
 
+
+
 #pragma mark 显示带有自定义icon图片的消息
-/**
- 显示带有自定义icon图标消息HUD
- 
- @param icon 图标
- @param message 消息正文
- @param view 展示的view
- */
-+ (void)wj_showIcon:(UIImage *)icon message:(NSString *)message view:(nullable UIView *)view{
+
++ (void)wj_showIcon:(UIImage *)icon
+            message:(NSString *)message
+     hideAfterDelay:(NSTimeInterval)time
+               view:(nullable UIView *)view{
+    
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     // 默认
@@ -59,7 +70,39 @@
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
-    [hud hide:YES afterDelay:1.0];
+    [hud hide:YES afterDelay:time];
+
+    
+}
+
+/**
+ 显示带有自定义icon图标消息HUD
+ 
+ @param icon 图标
+ @param message 消息正文
+ @param view 展示的view
+ */
++ (void)wj_showIcon:(UIImage *)icon message:(NSString *)message view:(nullable UIView *)view{
+//    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+//    // 快速显示一个提示信息
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+//    // 默认
+//    //    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud.labelText = message;
+//    // 设置图片
+//    hud.customView = [[UIImageView alloc] initWithImage:icon];
+//    // 再设置模式
+//    hud.mode = MBProgressHUDModeCustomView;
+//    
+//    
+//    // 隐藏时候从父控件中移除
+//    hud.removeFromSuperViewOnHide = YES;
+//    
+//    // 1秒之后再消失
+//    [hud hide:YES afterDelay:1.0];
+    
+    [self wj_showIcon:icon message:message hideAfterDelay:1.0 view:view];
+    
 }
 
 
@@ -217,9 +260,17 @@
 
 #pragma mark - 显示成功失败信息（打勾打叉动画）
 
-+ (void)wj_showError:(nullable NSString *)error toView:(nullable UIView *)view{
++ (void)wj_showError:(nullable NSString *)error
+      hideAfterDelay:(NSTimeInterval)time
+              toView:(nullable UIView *)view{
+    [self show:error animationType:WJAnimationTypeError hideAfterDelay:time view:view];
     
-    [self show:error animationType:WJAnimationTypeError view:view];
+}
+
++ (void)wj_showError:(nullable NSString *)error toView:(nullable UIView *)view {
+    
+//    [self show:error animationType:WJAnimationTypeError view:view];
+    [self wj_showError:error hideAfterDelay:1.0 toView:nil];
 }
 
 + (void)wj_showError:(nullable NSString *)error
@@ -231,10 +282,19 @@
     [self wj_showError:nil];
 }
 
+
+
++ (void)wj_showSuccess:(nullable NSString *)success
+        hideAfterDelay:(NSTimeInterval)time
+                toView:(nullable UIView *)view{
+    [self show:success animationType:WJAnimationTypeSuccess hideAfterDelay:time view:view];
+}
+
 + (void)wj_showSuccess:(nullable NSString *)success toView:(nullable UIView *)view
 {
     
-    [self show:success animationType:WJAnimationTypeSuccess view:view];
+//    [self show:success animationType:WJAnimationTypeSuccess view:view];
+    [self wj_showSuccess:success hideAfterDelay:1.0 toView:view];
 
 }
 
@@ -250,12 +310,7 @@
 
 
 
-
-
-
-
-
-+ (void)show:(nullable NSString *)text animationType:(WJAnimationType)animationType view:(nullable UIView *)view
++ (void)show:(nullable NSString *)text animationType:(WJAnimationType)animationType hideAfterDelay:(NSTimeInterval)time view:(nullable UIView *)view
 {
     //    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     //    // 快速显示一个提示信息
@@ -277,15 +332,21 @@
     
     WJSuccessView *suc = [[WJSuccessView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     suc.wj_animationType = animationType;
-    [MBProgressHUD wj_showCustomView:suc message:text hideAfterDelay:1.0 toView:view];
+    [MBProgressHUD wj_showCustomView:suc message:text hideAfterDelay:time toView:view];
 }
 
 #pragma mark - 操作成功彩带粒子祝贺HUD
 
++ (void)wj_showSuccessWithColouredRibbonAnimation:(nullable NSString *)message
+                                   hideAfterDelay:(NSTimeInterval)time {
+    [self wj_showSuccess:message hideAfterDelay:time toView:nil];
+    [WJColouredRibbonAnimation wj_showSuccessColouredRibbonAnimationWithHideTime:time];
+}
 
 + (void)wj_showSuccessWithColouredRibbonAnimation:(nullable NSString *)message {
-    [self wj_showSuccess:message];
-    [WJColouredRibbonAnimation wj_showSuccessColouredRibbonAnimationWithHideTime:1.0];
+//    [self wj_showSuccess:message];
+//    [WJColouredRibbonAnimation wj_showSuccessColouredRibbonAnimationWithHideTime:1.0];
+    [self wj_showSuccessWithColouredRibbonAnimation:message hideAfterDelay:1.0];
     
 }
 

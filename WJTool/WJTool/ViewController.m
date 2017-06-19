@@ -74,21 +74,25 @@
     
     if (0 == indexPath.row) {
         
-        [MBProgressHUD wj_showText:@"Hello World !" view:nil];
+//        [MBProgressHUD wj_showText:@"Hello World !" view:nil];
+        [MBProgressHUD wj_showPlainText:@"Hello World !" view:nil];
+//        [MBProgressHUD wj_showPlainText:@"Hello World !" hideAfterDelay:3.0 view:nil];
         
     } else if (1 == indexPath.row) {
         
-        [MBProgressHUD wj_showSuccess:@"操作成功"];
+//        [MBProgressHUD wj_showSuccess:@"操作成功"];
+        [MBProgressHUD wj_showSuccess:@"操作成功" hideAfterDelay:2.0 toView:nil];
         
     } else if (2 == indexPath.row) {
         
-        [MBProgressHUD wj_showError:@"操作失败"];
-//        [MBProgressHUD wj_showColouredRibbonAnimationWithHideTime:1.0];
+//        [MBProgressHUD wj_showError:@"操作失败"];
+        [MBProgressHUD wj_showError:@"操作失败" hideAfterDelay:2.0 toView:nil];
         
     } else if (3 == indexPath.row) {
 
 //        [MBProgressHUD wj_showIcon:[UIImage imageNamed:@"icon_component"] message:@"测试图标" view:nil];
-        [MBProgressHUD wj_showIcon:[UIImage imageNamed:@"icon_component"] message:@"测试图标"];
+//        [MBProgressHUD wj_showIcon:[UIImage imageNamed:@"icon_component"] message:@"测试图标"];
+        [MBProgressHUD wj_showIcon:[UIImage imageNamed:@"icon_component"] message:@"测试图标" hideAfterDelay:3.0 view:nil];
         
     } else if (4 == indexPath.row) {
         
@@ -171,8 +175,9 @@
         
     } else if (9 == indexPath.row) {
         
-//        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation:@"操作成功"];
-        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation];
+        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation:@"操作成功"];
+//        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation];
+//        [MBProgressHUD wj_showSuccessWithColouredRibbonAnimation:@"操作成功" hideAfterDelay:3.0];
         
     } else if (10 == indexPath.row) {
         

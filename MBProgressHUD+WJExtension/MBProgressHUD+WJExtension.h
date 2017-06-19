@@ -14,11 +14,15 @@
 //
 //  4、更新日志：
 //  版本：1.2.0 --> 增加撒花祝贺效果，修改打勾打叉动画时长
+//  2017.6.19 版本：1.3.1 --> 增加设置HUD展示时长的方法
 //----------------------------------------------------------------------------------
 
 
 #import "MBProgressHUD.h"
 
+// 过期提示
+#define WJExtensionDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)
+#define WJAttributeDeprecated(instead) __attribute__((deprecated(instead)))
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,45 +38,97 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
 @interface MBProgressHUD (WJExtension)
 
 
+#pragma mark - 显示纯文本信息
+/**
+ 只显示纯文本信息, 默认 1 秒后消失
+ */
++ (void)wj_showText:(NSString *)text view:(nullable UIView *)view WJAttributeDeprecated("使用 wj_showPlainText:view:方法");
+
+/**
+ 只显示纯文本信息, 默认 1 秒后消失
+
+ @param text 消息文本
+ @param view 展示的View
+ */
++ (void)wj_showPlainText:(NSString *)text view:(nullable UIView *)view;
+
+
+/**
+ 只显示纯文本信息
+
+ @param text 消息文本
+ @param time HUD展示时长
+ @param view 展示的View
+ */
++ (void)wj_showPlainText:(NSString *)text
+          hideAfterDelay:(NSTimeInterval)time
+                    view:(nullable UIView *)view;
+
 
 #pragma mark - 显示操作成功或失败信息（自定义view打勾打叉动画）
 
 /**
  显示失败信息，同时有打叉的动画
+ 
+ @param error 错误信息
+ @param time HUD展示时长
+ @param view 展示的view
+ */
++ (void)wj_showError:(nullable NSString *)error
+      hideAfterDelay:(NSTimeInterval)time
+              toView:(nullable UIView *)view;
+
+/**
+ 显示失败信息，同时有打叉的动画, 默认 1 秒后消失
 
  @param error 错误信息提示文本
  @param view 展示的View
  */
 + (void)wj_showError:(nullable NSString *)error toView:(nullable UIView *)view;
 
+
+
 /**
- 显示失败信息，同时有打叉的动画
+ 显示失败信息，同时有打叉的动画，默认 1 秒后消失
 
  @param error 错误信息提示文本
  */
 + (void)wj_showError:(nullable NSString *)error;
 
 /**
- 只显示打叉动画HUD
+ 只显示打叉动画HUD，默认 1 秒后消失
  */
 + (void)wj_showError;
 
+
+
 /**
  显示成功信息，同时会有一个打勾的动画
+
+ @param success 成功信息提示文本
+ @param time HUD展示时长
+ @param view 展示的View
+ */
++ (void)wj_showSuccess:(nullable NSString *)success
+      hideAfterDelay:(NSTimeInterval)time
+              toView:(nullable UIView *)view;
+
+/**
+ 显示成功信息，同时会有一个打勾的动画, 默认 1s 后消失
 
  @param success 成功信息提示文本
  @param view 展示的View
  */
 + (void)wj_showSuccess:(nullable NSString *)success toView:(nullable UIView *)view;
 /**
- 显示成功信息，同时会有一个打勾的动画
+ 显示成功信息，同时会有一个打勾的动画, 默认 1s 后消失
  
  @param success 成功信息提示文本
  */
 + (void)wj_showSuccess:(nullable NSString *)success;
 
 /**
- 只显示打勾动画HUD
+ 只显示打勾动画HUD，默认 1s 后消失
  */
 + (void)wj_showSuccess;
 
@@ -84,10 +140,21 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
  显示操作成功HUD的同时伴随碎花粒子动画效果，可用于祝贺的场景
 
  @param message 祝贺消息
+ @param time HUD展示时长
+ */
++ (void)wj_showSuccessWithColouredRibbonAnimation:(nullable NSString *)message
+                        hideAfterDelay:(NSTimeInterval)time;
+
+/**
+ 显示操作成功HUD的同时伴随碎花粒子动画效果，可用于祝贺的场景, 默认 1s 后消失
+
+ @param message 祝贺消息
  */
 + (void)wj_showSuccessWithColouredRibbonAnimation:(nullable NSString *)message;
+
+
 /**
- 显示操作成功HUD的同时伴随碎花粒子动画效果，可用于祝贺的场景
+ 显示操作成功HUD的同时伴随碎花粒子动画效果，可用于祝贺的场景， 默认 1s 后消失
  */
 + (void)wj_showSuccessWithColouredRibbonAnimation;
 
@@ -99,18 +166,26 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
 
 
 
-#pragma mark - 显示纯文本信息
-/**
- 只显示文字
- */
-+ (void)wj_showText:(NSString *)text view:(nullable UIView *)view;
+
 
 
 #pragma mark - 自己设置提示信息的 图标
 
-
 /**
  显示带有自定义icon图标消息HUD
+
+ @param icon 图标
+ @param message 消息正文
+ @param time HUD展示时长
+ @param view 展示的view
+ */
++ (void)wj_showIcon:(UIImage *)icon
+            message:(NSString *)message
+     hideAfterDelay:(NSTimeInterval)time
+               view:(nullable UIView *)view;
+
+/**
+ 显示带有自定义icon图标消息HUD, 默认 1s 后消失
 
  @param icon 图标
  @param message 消息正文
@@ -238,7 +313,7 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
 
  @param customView 自定义的view
  @param message 消息正文，传nil只显示自定义的view在HUD上
- @param time 多少秒后消失
+ @param time HUD展示时长
  @param view 展示的view
  */
 + (void)wj_showCustomView:(UIView *)customView
@@ -257,7 +332,7 @@ typedef NS_ENUM(NSInteger, WJHUDLoadingProgressStyle) {
  自定义HUD中显示的view, 闭包返回自定义的View
 
  @param message 消息正文
- @param time 多少秒后消失
+ @param time HUD展示时长
  @param view 展示的view
  @param customView 返回自定义UIView
  */
